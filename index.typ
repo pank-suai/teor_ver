@@ -9,7 +9,7 @@
 
 
 #show: ilm.with(
-  title: [Название],
+  title: [Теория вероятностей],
   author: 
     "Панков Василий <pank-su>",
   author-format: (author) => [
@@ -20,7 +20,7 @@
       )][#h(1em)][#text(author, size: 1.6em)]
   ],
   date: datetime.today(),
-  abstract: [Кто введёт? Насколько краткий конспект? на чём основан?],
+  abstract: [По лекциям Бутениной],
   table-of-contents: outline(depth: 2),
   external-link-circle: false
 )

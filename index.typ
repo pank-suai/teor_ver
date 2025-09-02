@@ -9,7 +9,7 @@
 
 
 #show: ilm.with(
-  title: [Теория вероятностей],
+ title: [Теория вероятностей],
   author: 
     "Панков Василий <pank-su>",
   author-format: (author) => [

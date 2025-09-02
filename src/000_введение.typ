@@ -7,7 +7,7 @@
 
 Обозначения: $A,B,C$
 ```
-Если событие не имеет под собой статистики, то оно не детерминированное 
+Если событие не имеет под собой статистики, то оно не детерминированное
 ```
 
 / Достоверное событие ($Omega$): всегда происходит.
@@ -26,26 +26,49 @@
 детерминировано (0 или 1)
 ```
 
-/ $overline(A)$: противоположное событие состоит в том, что событие
+/ Противоположное событие ($overline(A)$): состоит в том, что событие
   $A$ не произошло.
 
 
-/ $A inter B (A dot B, A B)$: произведение событий совместное наступление событий.
-
-Если $A inter B = nothing$, то события $A$ и $B$ называются
-несовместными.
+/ Произведение событий $A inter B (A dot B, A B)$: совместное наступление событий. Если $A inter B = nothing$, то события $A$ и $B$ называются
+  несовместными.
 
 
-/ $A union B$: сумма события (хотя бы одно произошло).
+/ Сумма событий ($A union B$): сумма события (хотя бы одно произошло).
 
 / Закон де Моргана: $overline(A or B) = \{"ни одно"\} = overline(A)
-inter overline(B)$, $overline(A inter B) = \{"хотя бы одно не
+  inter overline(B)$, $overline(A inter B) = \{"хотя бы одно не
 произошло"\} = overline(A) or overline(B)$
 
 В диаграммах Венна:
 
-// TODO:
-
+#grid(columns: 2, cetz.canvas(
+  {
+    cetz-venn.venn2(
+      name: "venn",
+      ab-fill: gray, // Закрашиваем пересечение множеств A и B
+    )
+    import cetz.draw: *
+    content("venn.a", $A$)
+    content("venn.b", $B$)
+    content("venn.ab", $A inter B$)
+  },
+  length: 2cm,
+),cetz.canvas(
+  {
+    cetz-venn.venn2(
+      name: "venn",
+      a-fill: gray, // Закрашиваем только часть A
+      b-fill: gray, // Закрашиваем только часть B
+    )
+    import cetz.draw: *
+    content("venn.a", $A$)
+    content("venn.b", $B$)
+    content((0, -1.0), $A union B$)
+    content((0, -1.3), [$A ∩ B = nothing$])
+  },
+  length: 2cm,
+))
 
 == Свойства противоположного события
 
@@ -60,11 +83,15 @@ inter overline(B)$, $overline(A inter B) = \{"хотя бы одно не
 
 Приоритет: $inter, union$.
 
-+ $A union B = B union A$
++ Коммутативность:
+
+  $A union B = B union A$
 
   $A inter B = B inter A$
 
-+ $A union B union C = (A union B) union C = A union (B union C)$
++ Ассоциативность:
+
+  $A union B union C = (A union B) union C = A union (B union C)$
 
   $A inter B inter C = (A inter B) inter C = A inter (B inter C)$
 
@@ -81,14 +108,14 @@ inter overline(B)$, $overline(A inter B) = \{"хотя бы одно не
   $(A inter B) union C = (A union C) inter (B union C)$
 
 Если при наступлении события $A$ наступает событие $B$, то говорят,
-что событие $A$ влечёт наступление события $B$ $A subset.eq B$ или  $A subset B$.
+что событие $A$ влечёт наступление события $B$: $A subset.eq B$ или  $A subset B$.
 
 == Разность событий
 
 $A backslash B$ = {$A$ наступило, $B$ -- нет}
 
 $A backslash B != B backslash A$
-  
+
 Симметрическая разность:
 
 $ A Delta B = A backslash B union B backslash A = {"только " A "или только" B} $
@@ -101,11 +128,11 @@ $ A union A dot B = A $
 $ A inter (A union B) = A $
 
 $
-    overline(A) A dot B = overline(A) union B
+  overline(A) A dot B = overline(A) union B
 $
 
 $
-    overline(A) inter (A union B) = overline(A) inter B
+  overline(A) inter (A union B) = overline(A) inter B
 $
 
 == Операции с $nothing$ и $Omega$
@@ -119,23 +146,26 @@ $ A union $
 
 
 $
-    O <= P(A) <= 1, forall "случайного события" A
+  O <= P(A) <= 1, forall "случайного события" A
 $ <ax1>
 
 $
-    P(Omega) = 1
+  P(Omega) = 1
 $ <ax2>
 
 / Аксиома 3: Для $forall$ двух несовместных событий $A$ и $B$ ($A B =
-nothing$) вероятность их суммы равно сумме вероятностей: $ cases(P (A
-union B) = P(A) + P(B) \
-
-P(A dot B) = nothing)  $
+  nothing$) вероятность их суммы равно сумме вероятностей: $ cases(
+    P (A
+      union B) = P(A) + P(B) \
+    P(A dot B) = nothing
+  ) $
 
 == Вероятность противоположного события
 
-т.к. $cases(A union overline(A) = Omega \
-A inter overline(A) = nothing)$, то с учётом аксиомы @ax1 и @ax2,
+т.к. $cases(
+  A union overline(A) = Omega \
+  A inter overline(A) = nothing
+)$, то с учётом аксиомы @ax1 и @ax2,
 получаем $P(A union overline(A)) = P(omega) => P(overline(A)) = 1 -
 P(A)$
 

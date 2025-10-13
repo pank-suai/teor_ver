@@ -9,7 +9,7 @@
 
 
 #show: ilm.with(
-  title: [Теория вероятностей],
+ title: [Теория вероятностей],
   author: 
     "Панков Василий <pank-su>",
   author-format: (author) => [
@@ -26,6 +26,9 @@
 )
 
 #include "src/000_введение.typ"
+#include "src/001_классическая_вероятность.typ"
+#include "src/001_элементы_комбиноторики_правила_суммы_и_умножения.typ"
+#include "src/002_бернулли.typ"
 
 
 /*

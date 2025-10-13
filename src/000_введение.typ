@@ -128,18 +128,29 @@ $ A union A dot B = A $
 $ A inter (A union B) = A $
 
 $
-  overline(A) A dot B = overline(A) union B
+    overline(A) union (A inter B) = overline(A) union B
 $
 
 $
   overline(A) inter (A union B) = overline(A) inter B
 $
-
+3
 == Операции с $nothing$ и $Omega$
 
-// TODO
+- Объединение с невозможным событием не меняет исходного события:
+  $ A union emptyset = A $
+- Пересечение с невозможным событием всегда даёт невозможное событие:
+  $ A inter emptyset = emptyset $ 
 
-$ A union $
+- Объединение с достоверным событием всегда даёт достоверное событие:
+  $ A union Omega = Omega $ 
+- Пересечение с достоверным событием не меняет исходного события:
+  $ A inter Omega = A $
+
+- Объединение события с его противоположностью даёт достоверное событие:
+  $ A union overline(A) = Omega $ 
+- Пересечение события с его противоположностью даёт невозможное событие (событие и его противоположность несовместны):
+  $ A inter overline(A) = emptyset $
 
 
 == Аксиомы вероятности

@@ -167,14 +167,14 @@ $ <ax2>
 / Аксиома 3: Для $forall$ двух несовместных событий $A$ и $B$ ($A B =
   nothing$) вероятность их суммы равно сумме вероятностей: $ cases(
     P (A
-      union B) = P(A) + P(B) \
+      union B) = P(A) + P(B),
     P(A dot B) = nothing
   ) $
 
 == Вероятность противоположного события
 
 т.к. $cases(
-  A union overline(A) = Omega \
+  A union overline(A) = Omega,
   A inter overline(A) = nothing
 )$, то с учётом аксиомы @ax1 и @ax2,
 получаем $P(A union overline(A)) = P(omega) => P(overline(A)) = 1 -
